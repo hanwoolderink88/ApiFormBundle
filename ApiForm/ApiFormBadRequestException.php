@@ -5,15 +5,15 @@ namespace Hanwoolderink\ApiForm\ApiForm;
 
 use Exception;
 
-class ApiFormMisconfiguredException extends Exception
+class ApiFormBadRequestException extends Exception
 {
     /**
      * @var string
      */
-    protected $message = 'ApiFormItem misconfigured';
+    protected $message = 'Bad request';
 
     /**
      * @var int
      */
-    protected $code = 500;
+    protected $code = 400;
 }

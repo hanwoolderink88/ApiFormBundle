@@ -2,7 +2,7 @@
 
 namespace Hanwoolderink\ApiForm\DependencyInjection;
 
-use App\Exception\NotCorrectException;
+use Hanwoolderink\ApiForm\ApiForm\ApiFormBadRequestException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -76,14 +76,14 @@ class RequestService
 
     /**
      * @return int
-     * @throws NotCorrectException
+     * @throws ApiFormBadRequestException
      */
     public function getLimit(): int
     {
         $max = 100;
         $limit = (int)$this->request->query->get('limit', 20);
         if ($max < $limit) {
-            throw new NotCorrectException(["Limit exceeds maximum of {$max}"]);
+            throw new ApiFormBadRequestException("Limit exceeds maximum of {$max}");
         }
 
         return (int)min($max, $limit);
