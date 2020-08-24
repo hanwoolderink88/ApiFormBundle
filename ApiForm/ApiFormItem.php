@@ -4,14 +4,22 @@ namespace Hanwoolderink\ApiForm\ApiForm;
 
 class ApiFormItem
 {
+    public const TYPE_STRING = 'string';
+    public const TYPE_INT = 'int';
+    public const TYPE_FLOAT = 'float';
+    public const TYPE_ARRAY = 'array';
+    public const TYPE_PASSWORD = 'password';
+    public const TYPE_DATE = 'date';
+    public const TYPE_DATETIME = 'datetime';
+
     private const ALLOWED_TYPES = [
-        ApiFormItemFactory::TYPE_STRING,
-        ApiFormItemFactory::TYPE_INT,
-        ApiFormItemFactory::TYPE_FLOAT,
-        ApiFormItemFactory::TYPE_ARRAY,
-        ApiFormItemFactory::TYPE_PASSWORD,
-        ApiFormItemFactory::TYPE_DATE,
-        ApiFormItemFactory::TYPE_DATETIME,
+        self::TYPE_STRING,
+        self::TYPE_INT,
+        self::TYPE_FLOAT,
+        self::TYPE_ARRAY,
+        self::TYPE_PASSWORD,
+        self::TYPE_DATE,
+        self::TYPE_DATETIME,
     ];
 
     /**

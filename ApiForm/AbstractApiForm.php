@@ -61,16 +61,15 @@ abstract class AbstractApiForm
         $this->em = $em;
         $this->encoder = $encoder;
 
-        $this->config(new ApiFormItemFactory());
+        $this->config();
     }
 
     /**
      * Config goes in this method, this will be called in the abstract constructor to set the defined values
      *
      * $this->form[] = [];
-     * @param ApiFormItemFactory $factory
      */
-    abstract protected function config(ApiFormItemFactory $factory): void;
+    abstract protected function config(): void;
 
     /**
      * @param $entity
@@ -79,6 +78,11 @@ abstract class AbstractApiForm
     {
         $this->entity = $entity;
         $this->isNew = $this->entity->getId() === null;
+    }
+
+    public function createNewItem(string $name)
+    {
+        return new ApiFormItem($name);
     }
 
     /**

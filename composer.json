@@ -18,10 +18,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Hanwoolderink\\ApiForm\\": "/"
+            "Hanwoolderink\\ApiForm\\": ""
         }
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3"
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit Tests"
+        ],
+        "test-coverage": [
+            "vendor/bin/phpunit --coverage-html Tests/html ."
+        ]
     }
 }
