@@ -2,7 +2,6 @@
     "name": "hanwoolderink88/apiformbundle",
     "description": "Symfony bundle for rest api form validation",
     "type": "symfony-bundle",
-    "license": "MIT",
     "authors": [
         {
             "name": "hanwoolderink",
@@ -13,10 +12,10 @@
 	 "php": "^7.4",
 	"doctrine/orm": "^2.7",
 	"symfony/framework-bundle": "5.1.*"
-    },
-    "autoload": {
+    }"autoload": {
         "psr-4": {
-            "Hanwoolderink\\ApiForm\\": "/"
+            "App\\": "src/",
+            "Hanwoolderink\\ApiForm\\": "ApiFormBundle/"
         }
     }
 }
