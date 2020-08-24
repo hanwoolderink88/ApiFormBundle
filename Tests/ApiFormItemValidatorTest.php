@@ -55,4 +55,67 @@ class ApiFormItemValidatorTest extends TestCase
         $item->setRegex('/^[a-z]+$/');
         $this->assertFalse($validator->isValid(), 'regex test failed for type string');
     }
+
+    public function testTypeInt()
+    {
+        $item = new ApiFormItem('foo');
+        $item->setType(ApiFormItem::TYPE_INT);
+
+        $validator = new ApiFormItemValidator($item, 'Foo', true);
+
+        $this->assertFalse($validator->isValid(), 'Type int typecheck is not working');
+    }
+
+    public function testTypeFloat()
+    {
+        $item = new ApiFormItem('foo');
+        $item->setType(ApiFormItem::TYPE_FLOAT);
+
+        $validator = new ApiFormItemValidator($item, 1, true);
+
+        $this->assertFalse($validator->isValid(), 'Type int typecheck is not working');
+    }
+
+    public function testTypeArray()
+    {
+        $item = new ApiFormItem('foo');
+        $item->setType(ApiFormItem::TYPE_ARRAY);
+
+        $validator = new ApiFormItemValidator($item, ['foo','bar'], true);
+        $validatorInvalid = new ApiFormItemValidator($item, 'foobar', true);
+
+        $this->assertTrue($validator->isValid(), 'Type array typecheck is not working');
+        $this->assertFalse($validatorInvalid->isValid(), 'Type array typecheck is not working');
+
+        // min length (should be invalid)
+        $item->setMinLength(3);
+        $this->assertFalse($validator->isValid(), 'min length test failed for type array');
+
+        // max length (should be invalid)
+        $item->setMinLength(null); // reset
+        $item->setMaxLength(1);
+        $this->assertFalse($validator->isValid(), 'max length test failed for type array');
+    }
+
+    public function testTypeDate()
+    {
+        $item = new ApiFormItem('foo');
+        $item->setType(ApiFormItem::TYPE_DATE);
+
+        $validator = new ApiFormItemValidator($item, '2020-01-33', true);
+
+        $this->assertFalse($validator->isValid(), 'Type Date typecheck is not working');
+    }
+
+    public function testTypeDatetime()
+    {
+        $item = new ApiFormItem('foo');
+        $item->setType(ApiFormItem::TYPE_DATETIME);
+
+        $validator = new ApiFormItemValidator($item, '2020-01-01T21:11', true);
+        $validatorInvalid = new ApiFormItemValidator($item, '2020-33-01T26:11', true);
+
+        $this->assertTrue($validator->isValid(), 'Type Date typecheck is not working');
+        $this->assertFalse($validatorInvalid->isValid(), 'Type Date typecheck is not working');
+    }
 }
