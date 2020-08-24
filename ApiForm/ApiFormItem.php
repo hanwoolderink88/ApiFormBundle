@@ -40,7 +40,7 @@ class ApiFormItem
     /**
      * @var bool
      */
-    protected bool $canChange = true;
+    protected bool $changeable = true;
 
     /**
      * @var bool
@@ -142,18 +142,18 @@ class ApiFormItem
     /**
      * @return bool
      */
-    public function isCanChange(): bool
+    public function isChangeable(): bool
     {
-        return $this->canChange;
+        return $this->changeable;
     }
 
     /**
-     * @param bool $canChange
+     * @param bool $changeable
      * @return ApiFormItem
      */
-    public function setCanChange(bool $canChange): ApiFormItem
+    public function setChangeable(bool $changeable): self
     {
-        $this->canChange = $canChange;
+        $this->changeable = $changeable;
 
         return $this;
     }
@@ -191,6 +191,10 @@ class ApiFormItem
      */
     public function setRegex(?string $regex): ApiFormItem
     {
+        if (@preg_match($regex, null) === false) {
+            throw new ApiFormMisconfiguredException("Not a regex for {$this->name}");
+        }
+
         $this->regex = $regex;
 
         return $this;

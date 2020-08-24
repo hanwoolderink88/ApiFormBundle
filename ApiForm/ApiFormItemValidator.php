@@ -44,7 +44,7 @@ class ApiFormItemValidator
         }
 
         // can change check (PUT|PATCH)
-        if (!$this->isNew && !$this->item->isCanChange() && !$valueIsEmpty) {
+        if (!$this->isNew && !$this->item->isChangeable() && !$valueIsEmpty) {
             $this->errors[] = "Field {$this->item->getName()} cannot be updated";
 
             return false; // move to next item, we don't want double errors per field
