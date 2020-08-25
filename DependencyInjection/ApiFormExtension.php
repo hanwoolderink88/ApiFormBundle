@@ -15,6 +15,7 @@ class ApiFormExtension extends Extension
      * @param ContainerBuilder $container
      * @throws Exception
      * @return void
+     * @codeCoverageIgnore
      */
     public function load(array $configs, ContainerBuilder $container)
     {

@@ -46,10 +46,10 @@ class RequestService
     {
         if ($this->body === null) {
             $body = $this->request->getContent();
-            if (is_resource($body)) {
-                $this->body = $body;
-            } else {
+            if (is_string($body)) {
                 $this->body = (array)json_decode($body, true);
+            } else {
+                $this->body = $body;
             }
         }
 
