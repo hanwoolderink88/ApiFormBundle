@@ -40,7 +40,7 @@ class ApiFormItemTest extends TestCase
         $item = new ApiFormItem('foo');
         $item->setName('Bar');
 
-        $this->assertSame('Bar', $item->getName(), 'name is not updated or incorrect');
+        $this->assertSame('Barr', $item->getName(), 'name is not updated or incorrect');
     }
 
     /**
