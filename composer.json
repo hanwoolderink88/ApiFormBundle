@@ -22,14 +22,13 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.3",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "scripts": {
-        "test": [
-            "vendor/bin/phpunit Tests"
-        ],
-        "test-coverage": [
-            "vendor/bin/phpunit --coverage-html Tests/html ."
-        ]
+        "test": "vendor/bin/phpunit Tests",
+        "test-coverage": "vendor/bin/phpunit --coverage-html Tests/html .",
+        "sniff": "vendor/bin/phpcs --standard=ruleset.xml DependencyInjection ApiForm",
+        "sniff-fix": ""
     }
 }
