@@ -11,9 +11,10 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 class ApiFormExtension extends Extension
 {
     /**
-     * @param array $configs
+     * @param mixed[]|array $configs
      * @param ContainerBuilder $container
      * @throws Exception
+     * @return void
      */
     public function load(array $configs, ContainerBuilder $container)
     {

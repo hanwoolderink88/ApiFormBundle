@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApiFormItemValidatorTest extends TestCase
 {
-    public function testRequiredError()
+    public function testRequiredError(): void
     {
         $item = new ApiFormItem('foo');
         $item->setRequired(true);
@@ -14,10 +14,10 @@ class ApiFormItemValidatorTest extends TestCase
         $validator = new ApiFormItemValidator($item, null, true);
         $validator->isValid();
 
-        $this->assertEquals(count($validator->getErrors()), 1, true);
+        $this->assertEquals(count($validator->getErrors()), 1, 'Item is required has failed');
     }
 
-    public function testCanChangeError()
+    public function testCanChangeError(): void
     {
         $item = new ApiFormItem('foo');
         $item->setChangeable(false);
@@ -25,10 +25,10 @@ class ApiFormItemValidatorTest extends TestCase
         $validator = new ApiFormItemValidator($item, '1', false);
         $validator->isValid();
 
-        $this->assertEquals(count($validator->getErrors()), 1, true);
+        $this->assertEquals(count($validator->getErrors()), 1, 'Item is changeable has failed');
     }
 
-    public function testTypeStringPassword()
+    public function testTypeStringPassword(): void
     {
         $item = new ApiFormItem('foo');
         $item->setType(ApiFormItem::TYPE_PASSWORD);
@@ -56,7 +56,7 @@ class ApiFormItemValidatorTest extends TestCase
         $this->assertFalse($validator->isValid(), 'regex test failed for type string');
     }
 
-    public function testTypeInt()
+    public function testTypeInt(): void
     {
         $item = new ApiFormItem('foo');
         $item->setType(ApiFormItem::TYPE_INT);
@@ -66,7 +66,7 @@ class ApiFormItemValidatorTest extends TestCase
         $this->assertFalse($validator->isValid(), 'Type int typecheck is not working');
     }
 
-    public function testTypeFloat()
+    public function testTypeFloat(): void
     {
         $item = new ApiFormItem('foo');
         $item->setType(ApiFormItem::TYPE_FLOAT);
@@ -76,12 +76,12 @@ class ApiFormItemValidatorTest extends TestCase
         $this->assertFalse($validator->isValid(), 'Type int typecheck is not working');
     }
 
-    public function testTypeArray()
+    public function testTypeArray(): void
     {
         $item = new ApiFormItem('foo');
         $item->setType(ApiFormItem::TYPE_ARRAY);
 
-        $validator = new ApiFormItemValidator($item, ['foo','bar'], true);
+        $validator = new ApiFormItemValidator($item, ['foo', 'bar'], true);
         $validatorInvalid = new ApiFormItemValidator($item, 'foobar', true);
 
         $this->assertTrue($validator->isValid(), 'Type array typecheck is not working');
@@ -97,7 +97,7 @@ class ApiFormItemValidatorTest extends TestCase
         $this->assertFalse($validator->isValid(), 'max length test failed for type array');
     }
 
-    public function testTypeDate()
+    public function testTypeDate(): void
     {
         $item = new ApiFormItem('foo');
         $item->setType(ApiFormItem::TYPE_DATE);
@@ -107,7 +107,7 @@ class ApiFormItemValidatorTest extends TestCase
         $this->assertFalse($validator->isValid(), 'Type Date typecheck is not working');
     }
 
-    public function testTypeDatetime()
+    public function testTypeDatetime(): void
     {
         $item = new ApiFormItem('foo');
         $item->setType(ApiFormItem::TYPE_DATETIME);

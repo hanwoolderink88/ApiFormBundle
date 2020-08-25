@@ -17,7 +17,7 @@ class ApiFormItemValidator
     private $value;
 
     /**
-     * @var array
+     * @var string[]
      */
     private array $errors = [];
 
@@ -26,6 +26,12 @@ class ApiFormItemValidator
      */
     private bool $isNew;
 
+    /**
+     * ApiFormItemValidator constructor.
+     * @param ApiFormItem $item
+     * @param mixed $value
+     * @param bool $isNew
+     */
     public function __construct(ApiFormItem $item, $value, bool $isNew)
     {
         $this->item = $item;
@@ -122,7 +128,7 @@ class ApiFormItemValidator
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getErrors(): array
     {
@@ -130,11 +136,11 @@ class ApiFormItemValidator
     }
 
     /**
-     * @param $date
+     * @param string $date
      * @param string $format
      * @return bool
      */
-    private function validateDate($date, $format = 'Y-m-d'): bool
+    private function validateDate(string $date, $format = 'Y-m-d'): bool
     {
         $d = DateTime::createFromFormat($format, $date);
 

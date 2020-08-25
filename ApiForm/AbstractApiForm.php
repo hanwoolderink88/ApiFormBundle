@@ -17,7 +17,7 @@ abstract class AbstractApiForm
     protected array $form = [];
 
     /**
-     * @var array
+     * @var string[]
      */
     private array $errors = [];
 
@@ -72,15 +72,19 @@ abstract class AbstractApiForm
     abstract protected function config(): void;
 
     /**
-     * @param $entity
+     * @param mixed $entity
      */
-    public function setEntity($entity)
+    public function setEntity($entity): void
     {
         $this->entity = $entity;
         $this->isNew = $this->entity->getId() === null;
     }
 
-    public function createNewItem(string $name)
+    /**
+     * @param string $name
+     * @return ApiFormItem
+     */
+    public function createNewItem(string $name): ApiFormItem
     {
         return new ApiFormItem($name);
     }
@@ -133,12 +137,12 @@ abstract class AbstractApiForm
             $value = $this->request->getBody($name);
 
             if ($name !== null && $value !== null && method_exists($this->entity, $method)) {
-                if ($item->getType() === ApiFormItemFactory::TYPE_PASSWORD) {
+                if ($item->getType() === ApiFormItem::TYPE_PASSWORD) {
                     $value = $this->encoder->encodePassword($this->entity, $value);
                 }
 
-                if ($item->getType() === ApiFormItemFactory::TYPE_DATE ||
-                    $item->getType() === ApiFormItemFactory::TYPE_DATETIME
+                if ($item->getType() === ApiFormItem::TYPE_DATE ||
+                    $item->getType() === ApiFormItem::TYPE_DATETIME
                 ) {
                     // strip the milliseconds and timezone
                     $value = explode('.', $value, 1)[0];
@@ -153,7 +157,7 @@ abstract class AbstractApiForm
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getErrors(): array
     {

@@ -14,7 +14,7 @@ class RequestService
     private ?Request $request;
 
     /**
-     * @var array|resource|null
+     * @var mixed[]|resource|null
      */
     private $body = null;
 
@@ -71,7 +71,7 @@ class RequestService
      */
     public function getPage(): int
     {
-        return (int)$this->request->query->get('page', 1);
+        return (int)$this->request->query->get('page', '1');
     }
 
     /**
@@ -81,7 +81,7 @@ class RequestService
     public function getLimit(): int
     {
         $max = 100;
-        $limit = (int)$this->request->query->get('limit', 20);
+        $limit = (int)$this->request->query->get('limit', '20');
         if ($max < $limit) {
             throw new ApiFormBadRequestException("Limit exceeds maximum of {$max}");
         }

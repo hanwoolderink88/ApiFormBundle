@@ -188,10 +188,11 @@ class ApiFormItem
     /**
      * @param string|null $regex
      * @return ApiFormItem
+     * @throws ApiFormMisconfiguredException
      */
     public function setRegex(?string $regex): ApiFormItem
     {
-        if (@preg_match($regex, null) === false) {
+        if (@preg_match($regex, '') === false) {
             throw new ApiFormMisconfiguredException("Not a regex for {$this->name}");
         }
 

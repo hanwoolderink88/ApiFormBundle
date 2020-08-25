@@ -9,7 +9,7 @@ class ApiFormItemTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         $item = new ApiFormItem('foo');
         $item
@@ -35,7 +35,7 @@ class ApiFormItemTest extends TestCase
     /**
      *
      */
-    public function testSetNewName()
+    public function testSetNewName(): void
     {
         $item = new ApiFormItem('foo');
         $item->setName('Bar');
@@ -46,7 +46,7 @@ class ApiFormItemTest extends TestCase
     /**
      * @throws ApiFormMisconfiguredException
      */
-    public function testSetWrongType()
+    public function testSetWrongType(): void
     {
         $this->expectException(ApiFormMisconfiguredException::class);
 
@@ -57,7 +57,7 @@ class ApiFormItemTest extends TestCase
     /**
      * @throws ApiFormMisconfiguredException
      */
-    public function testSetWrongRegex()
+    public function testSetWrongRegex(): void
     {
         $this->expectException(ApiFormMisconfiguredException::class);
 
