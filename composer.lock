@@ -5172,48 +5172,6 @@
             "time": "2020-08-10T04:50:15+00:00"
         },
         {
-            "name": "styleci/cli",
-            "version": "v0.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/StyleCI/CLI.git",
-                "reference": "b6397059d9fde061c5a0fffeb71a7cc5b8d07cca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/StyleCI/CLI/zipball/b6397059d9fde061c5a0fffeb71a7cc5b8d07cca",
-                "reference": "b6397059d9fde061c5a0fffeb71a7cc5b8d07cca",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-zlib": "*",
-                "php": "^7.2.5"
-            },
-            "suggest": {
-                "ext-curl": "Required for high performance HTTP transport"
-            },
-            "bin": [
-                "bin/styleci"
-            ],
-            "type": "library",
-            "extra": {
-                "bin-dir": "bin"
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "StyleCI",
-                    "email": "support@styleci.io"
-                }
-            ],
-            "description": "The CLI tool for StyleCI",
-            "time": "2020-07-31T15:32:40+00:00"
-        },
-        {
             "name": "theseer/tokenizer",
             "version": "1.2.0",
             "source": {

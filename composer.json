@@ -29,6 +29,6 @@
         "test": "vendor/bin/phpunit Tests",
         "test-coverage": "vendor/bin/phpunit --coverage-html Tests/html .",
         "sniff": "vendor/bin/phpcs --standard=ruleset.xml DependencyInjection ApiForm",
-        "sniff-fix": ""
+        "sniff-fix": "vendor/bin/phpcbf --standard=ruleset.xml DependencyInjection ApiForm"
     }
 }
