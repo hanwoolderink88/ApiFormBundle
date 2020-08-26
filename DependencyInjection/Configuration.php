@@ -8,7 +8,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * @return TreeBuilder|void
+     * @inheritDoc
      */
     public function getConfigTreeBuilder()
     {
@@ -27,5 +27,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('test_var2')
             ->defaultValue('hello world')
             ->end();
+
+        return $treeBuilder;
     }
 }
