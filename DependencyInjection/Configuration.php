@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('hanwoolderink88_apiform');
+        $treeBuilder = new TreeBuilder('api_form');
         $rootNode = $treeBuilder->getRootNode();
 
         /** @phpstan-ignore-next-line */
