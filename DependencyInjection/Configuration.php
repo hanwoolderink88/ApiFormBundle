@@ -14,18 +14,9 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('api_form');
         $rootNode = $treeBuilder->getRootNode();
-
-        /** @phpstan-ignore-next-line */
-        $nodeBuilder = $rootNode->addDefaultsIfNotSet()->children();
-
-        $nodeBuilder
-            ->scalarNode('test_var')
-            ->defaultNull()
-            ->end();
-
-        $nodeBuilder
-            ->scalarNode('test_var2')
-            ->defaultValue('hello world')
+        $rootNode->addDefaultsIfNotSet()->children()
+            ->scalarNode('test_var')->defaultNull()->end()
+            ->scalarNode('test_var2')->defaultValue('hello world')->end()
             ->end();
 
         return $treeBuilder;
