@@ -1,7 +1,7 @@
 <?php
 
-use Hanwoolderink\ApiForm\ApiForm\ApiFormItem;
-use Hanwoolderink\ApiForm\ApiForm\ApiFormItemValidator;
+use Hanwoolderink88\ApiForm\Src\ApiFormItem;
+use Hanwoolderink88\ApiForm\Src\ApiFormItemValidator;
 use PHPUnit\Framework\TestCase;
 
 class ApiFormItemValidatorTest extends TestCase

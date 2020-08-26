@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanwoolderink\ApiForm\DependencyInjection;
+namespace Hanwoolderink88\ApiForm\DependencyInjection;
 
 use Exception;
 use Symfony\Component\Config\FileLocator;
@@ -13,9 +13,9 @@ class ApiFormExtension extends Extension
     /**
      * @param mixed[]|array $configs
      * @param ContainerBuilder $container
-     * @throws Exception
      * @return void
      * @codeCoverageIgnore
+     * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container)
     {

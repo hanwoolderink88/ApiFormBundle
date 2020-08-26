@@ -1,7 +1,7 @@
 <?php
 
-use Hanwoolderink\ApiForm\ApiForm\ApiFormItem;
-use Hanwoolderink\ApiForm\ApiForm\ApiFormMisconfiguredException;
+use Hanwoolderink88\ApiForm\Src\ApiFormItem;
+use Hanwoolderink88\ApiForm\Src\ApiFormMisconfiguredException;
 use PHPUnit\Framework\TestCase;
 
 class ApiFormItemTest extends TestCase

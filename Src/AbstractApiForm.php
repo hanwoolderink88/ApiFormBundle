@@ -1,12 +1,11 @@
 <?php
 
-namespace Hanwoolderink\ApiForm\ApiForm;
+namespace Hanwoolderink88\ApiForm\Src;
 
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Exception;
-use Hanwoolderink\ApiForm\DependencyInjection\RequestService;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 abstract class AbstractApiForm

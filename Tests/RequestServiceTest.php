@@ -1,7 +1,7 @@
 <?php
 
-use Hanwoolderink\ApiForm\ApiForm\ApiFormBadRequestException;
-use Hanwoolderink\ApiForm\DependencyInjection\RequestService;
+use Hanwoolderink88\ApiForm\Src\ApiFormBadRequestException;
+use Hanwoolderink88\ApiForm\Src\RequestService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanwoolderink\ApiForm;
+namespace Hanwoolderink88\ApiForm;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

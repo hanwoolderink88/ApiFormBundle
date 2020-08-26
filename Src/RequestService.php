@@ -1,8 +1,8 @@
 <?php
 
-namespace Hanwoolderink\ApiForm\DependencyInjection;
+namespace Hanwoolderink88\ApiForm\Src;
 
-use Hanwoolderink\ApiForm\ApiForm\ApiFormBadRequestException;
+use Hanwoolderink88\ApiForm\Src\ApiFormBadRequestException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 

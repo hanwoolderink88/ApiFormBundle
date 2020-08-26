@@ -1,6 +1,6 @@
 <?php
 
-namespace Hanwoolderink\ApiForm\ApiForm;
+namespace Hanwoolderink88\ApiForm\Src;
 
 class ApiFormItem
 {
