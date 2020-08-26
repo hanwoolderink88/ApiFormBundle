@@ -4,9 +4,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="hanwoolderink.apiform.request" class="Hanwoolderink\ApiForm\Src\RequestService">
+        <service id="hanwoolderink.apiform.request" class="Hanwoolderink88\ApiForm\SrcRequestService">
             <argument type="service" id="request_stack"/>
         </service>
-        <service id="Hanwoolderink\ApiForm\Src\RequestService" alias="hanwoolderink.apiform.request"/>
+        <service id="Hanwoolderink88\ApiForm\SrcRequestService" alias="hanwoolderink.apiform.request"/>
     </services>
 </container>
