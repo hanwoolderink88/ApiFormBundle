@@ -5,15 +5,7 @@ cache:
 matrix:
     fast_finish: true
     include:
-          # Minimum supported dependencies with the latest and oldest PHP version
         - php: 7.4
-    allow_failures:
-          # Dev-master is allowed to fail.
-        - env: STABILITY="dev"
-before_install:
-    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
-    - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
 install:
     - composer install -n
 script:
