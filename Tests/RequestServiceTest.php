@@ -10,7 +10,7 @@ class RequestServiceTest extends TestCase
 {
     public function testBodyRequest(): void
     {
-        $content = json_encode([
+        $content = (string)json_encode([
             'foo' => 'bar',
         ]);
         $request = new Request([], [], [], [], [], [], $content);
@@ -28,6 +28,7 @@ class RequestServiceTest extends TestCase
         $content = [
             'foo' => 'bar',
         ];
+        /** @phpstan-ignore-next-line */
         $request = new Request([], [], [], [], [], [], $content);
         $requestStack = new  RequestStack();
         $requestStack->push($request);
@@ -45,7 +46,7 @@ class RequestServiceTest extends TestCase
             'page' => 1,
             'foo' => 'bar'
         ];
-        $request = new Request($qs, [], [], [], [], [], []);
+        $request = new Request($qs, [], [], [], [], [], null);
         $requestStack = new  RequestStack();
         $requestStack->push($request);
 
@@ -64,7 +65,7 @@ class RequestServiceTest extends TestCase
     public function testLimitToHigh(): void
     {
         $qs = ['limit' => 500];
-        $request = new Request($qs, [], [], [], [], [], []);
+        $request = new Request($qs, [], [], [], [], [], null);
         $requestStack = new  RequestStack();
         $requestStack->push($request);
 
