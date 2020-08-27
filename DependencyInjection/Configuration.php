@@ -2,6 +2,7 @@
 
 namespace Hanwoolderink88\ApiForm\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -14,10 +15,12 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('api_form');
         $rootNode = $treeBuilder->getRootNode();
-        $rootNode->addDefaultsIfNotSet()->children()
-            ->scalarNode('test_var')->defaultNull()->end()
-            ->scalarNode('test_var2')->defaultValue('hello world')->end()
-            ->end();
+        if ($rootNode instanceof ArrayNodeDefinition) {
+            $children = $rootNode->addDefaultsIfNotSet()->children();
+            $children->scalarNode('test_var')->defaultNull()->end();
+            $children->scalarNode('test_var2')->defaultValue('hello world')->end();
+            $children->end();
+        }
 
         return $treeBuilder;
     }
