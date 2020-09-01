@@ -55,7 +55,8 @@ abstract class AbstractApiForm
         RequestService $request,
         EntityManagerInterface $em,
         UserPasswordEncoderInterface $encoder
-    ) {
+    )
+    {
         $this->request = $request;
         $this->em = $em;
         $this->encoder = $encoder;
@@ -76,7 +77,13 @@ abstract class AbstractApiForm
     public function setEntity($entity): void
     {
         $this->entity = $entity;
-        $this->isNew = $this->entity->getId() === null;
+
+        // try catch for uninitialized typed property $id
+        try {
+            $this->isNew = $this->entity->getId() === null;
+        } catch (\Throwable $e) {
+            $this->isNew = true;
+        }
     }
 
     /**
