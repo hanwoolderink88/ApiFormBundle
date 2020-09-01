@@ -2,7 +2,6 @@
 
 namespace Hanwoolderink88\ApiForm\Src;
 
-use Hanwoolderink88\ApiForm\Src\ApiFormBadRequestException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -82,8 +81,13 @@ class RequestService
     {
         $max = 100;
         $limit = (int)$this->request->query->get('limit', '20');
+
         if ($max < $limit) {
             throw new ApiFormBadRequestException("Limit exceeds maximum of {$max}");
+        }
+
+        if ($limit <= 0) {
+            throw new ApiFormBadRequestException("Limit cannot be zero or less");
         }
 
         return (int)min($max, $limit);
