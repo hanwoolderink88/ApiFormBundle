@@ -41,6 +41,11 @@ abstract class AbstractApiForm
     private UserPasswordEncoderInterface $encoder;
 
     /**
+     * @var array
+     */
+    private array $extraInputBody = [];
+
+    /**
      * @var bool
      */
     private bool $isNew = false;
@@ -62,6 +67,31 @@ abstract class AbstractApiForm
         $this->encoder = $encoder;
 
         $this->config();
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return $this
+     */
+    public function addInputValue(string $key, $value): self
+    {
+        $this->extraInputBody[$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @return mixed|null
+     */
+    protected function getBody(string $key)
+    {
+        if(isset($this->extraInputBody[$key])){
+            return $this->extraInputBody[$key];
+        }
+
+        return $this->request->getBody($key);
     }
 
     /**
@@ -107,7 +137,7 @@ abstract class AbstractApiForm
         $this->errors = [];
 
         foreach ($this->form as $item) {
-            $value = $this->request->getBody($item->getName());
+            $value = $this->getBody($item->getName());
             $itemValidator = new ApiFormItemValidator($item, $value, $this->isNew);
             if ($itemValidator->isValid() === false) {
                 $this->errors = array_merge($this->errors, $itemValidator->getErrors());
@@ -140,16 +170,14 @@ abstract class AbstractApiForm
         foreach ($this->form as $item) {
             $name = $item->getName();
             $method = 'set' . ucfirst($name);
-            $value = $this->request->getBody($name);
+            $value = $this->getBody($name);
 
             if ($name !== null && $value !== null && method_exists($this->entity, $method)) {
                 if ($item->getType() === ApiFormItem::TYPE_PASSWORD) {
                     $value = $this->encoder->encodePassword($this->entity, $value);
                 }
 
-                if ($item->getType() === ApiFormItem::TYPE_DATE ||
-                    $item->getType() === ApiFormItem::TYPE_DATETIME
-                ) {
+                if ($item->getType() === ApiFormItem::TYPE_DATE || $item->getType() === ApiFormItem::TYPE_DATETIME) {
                     // strip the milliseconds and timezone
                     $value = explode('.', $value, 1)[0];
                     $value = new DateTime($value);
@@ -180,7 +208,7 @@ abstract class AbstractApiForm
         foreach ($this->form as $item) {
             if ($item->isUnique() === true) {
                 $name = $item->getName();
-                $value = $this->request->getBody($name);
+                $value = $this->getBody($name);
                 $uniqueFields[$name] = $value;
             }
         }
